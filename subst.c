@@ -62,6 +62,8 @@
 #include <tilde/tilde.h>
 #include <glob/strmatch.h>
 
+
+
 #if !defined (errno)
 extern int errno;
 #endif /* !errno */
@@ -103,6 +105,9 @@ extern int errno;
 #define WLPAREN		L'('
 #define WRPAREN		L')'
 #endif
+
+
+
 
 /* Evaluates to 1 if C is one of the shell's special parameters whose length
    can be taken, but is also one of the special expansion characters. */

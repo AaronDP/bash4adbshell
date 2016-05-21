@@ -30,3 +30,10 @@ proguard/
 
 # Android Studio captures folder
 captures/
+
+# My own temporary backups for multiple configurations for future versions for unpriveleged or root
+config-top.h.*
+
+# Leave out patch created files
+*.orig
+*.rej

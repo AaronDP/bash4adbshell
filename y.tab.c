@@ -4860,6 +4860,16 @@ parser_remaining_input ()
   return (shell_input_line + shell_input_line_index);
 }
 
+char *
+parser_remaining_input ()
+{
+  if (shell_input_line == 0)
+    return 0;
+  if (shell_input_line_index < 0 || shell_input_line_index >= shell_input_line_len)
+    return '\0';	/* XXX */
+  return (shell_input_line + shell_input_line_index);
+}
+
 #ifdef INCLUDE_UNUSED
 /* Back the input pointer up by one, effectively `ungetting' a character. */
 static void
@@ -5299,6 +5309,8 @@ reset_parser ()
 
   FREE (word_desc_to_read);
   word_desc_to_read = (WORD_DESC *)NULL;
+
+  eol_ungetc_lookahead = 0;
 
   eol_ungetc_lookahead = 0;
 

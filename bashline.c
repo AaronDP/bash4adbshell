@@ -63,6 +63,15 @@
 
 #include <glob/glob.h>
 
+
+
+#ifdef __ANDROID__
+int setpwent() { return 0; }
+int getgrent() { return 0; }
+void setgrent() {}
+void endgrent() {}
+#endif
+
 #if defined (ALIAS)
 #  include "alias.h"
 #endif

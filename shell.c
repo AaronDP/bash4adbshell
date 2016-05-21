@@ -978,6 +978,14 @@ subshell_exit (s)
   fflush (stdout);
   fflush (stderr);
 
+  /* Clean up the terminal if we are in a state where it's been modified. */
+#if defined (READLINE)
+  if (RL_ISSTATE (RL_STATE_TERMPREPPED) && rl_deprep_term_function)
+    (*rl_deprep_term_function) ();
+#endif
+  if (read_tty_modified ())
+    read_tty_cleanup ();
+
   /* Do trap[0] if defined.  Allow it to override the exit status
      passed to us. */
   if (signal_is_trapped (0))

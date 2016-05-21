@@ -58,20 +58,32 @@
 
 /* The default value of the PATH variable. */
 #ifndef DEFAULT_PATH_VALUE
-#define DEFAULT_PATH_VALUE \
-  "/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:."
+#ifdef __ANDROID__
+/* #define DEFAULT_PATH_VALUE "/data/local/tmp/xbin:/system/bin:/system/xbin:." */
+#define DEFAULT_PATH_VALUE "/data/local/tmp/xbin:/system/bin:/system/xbin:."
+#else
+#define DEFAULT_PATH_VALUE "/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:."
+#endif /* __ANDROID__ */
 #endif
 
 /* The value for PATH when invoking `command -p'.  This is only used when
    the Posix.2 confstr () function, or CS_PATH define are not present. */
 #ifndef STANDARD_UTILS_PATH
-#define STANDARD_UTILS_PATH \
-  "/bin:/usr/bin:/sbin:/usr/sbin:/etc:/usr/etc"
+#ifdef __ANDROID__
+#define STANDARD_UTILS_PATH "/data/local/tmp/xbin:/system/bin:/system/xbin:/data/local/tmp/etc:/data/local/tmp/lib"
+#else
+#define STANDARD_UTILS_PATH "/bin:/usr/bin:/sbin:/usr/sbin:/etc:/usr/etc"
+#endif /* __ANDROID__ */
 #endif
 
 /* Default primary and secondary prompt strings. */
+#ifdef __ANDROID__
+#define PPROMPT "\\[\\e[32;1m\\](\\[\\e[37;1m\\]$EUID\\033[0;37m@\\033[1;37m$HOSTNAME\\[\\e[32;1m\\])-(\\[\\e[37;1m\\]jobs\\033[0;37m:\\033[1;37m\\j\\[\\e[32;1m\\])-(\\[\\e[37;1m\\]\\w\\[\\e[32;1m\\])\\n(\\[\\[\\e[37;1m\\]! \\!\\[\\e[32;1m\\])-> \\[\\e[0m\\]"
+#define SPROMPT "> "
+#else
 #define PPROMPT "\\s-\\v\\$ "
 #define SPROMPT "> "
+#endif /* __ANDROID__ */
 
 /* Undefine this if you don't want the ksh-compatible behavior of reprinting
    the select menu after a valid choice is made only if REPLY is set to NULL
@@ -80,20 +92,20 @@
 #define KSH_COMPATIBLE_SELECT
 
 /* System-wide .bashrc file for interactive shells. */
-/* #define SYS_BASHRC "/etc/bash.bashrc" */
+#define SYS_BASHRC "/data/local/tmp/etc/.bashrc"
 
 /* System-wide .bash_logout for login shells. */
-/* #define SYS_BASH_LOGOUT "/etc/bash.bash_logout" */
+#define SYS_BASH_LOGOUT "/data/local/tmp/etc/.bash_logout"
 
 /* Define this to make non-interactive shells begun with argv[0][0] == '-'
    run the startup files when not in posix mode. */
-/* #define NON_INTERACTIVE_LOGIN_SHELLS */
+#define NON_INTERACTIVE_LOGIN_SHELLS
 
 /* Define this if you want bash to try to check whether it's being run by
    sshd and source the .bashrc if so (like the rshd behavior).  This checks
    for the presence of SSH_CLIENT or SSH2_CLIENT in the initial environment,
    which can be fooled under certain not-uncommon circumstances. */
-/* #define SSH_SOURCE_BASHRC */
+#define SSH_SOURCE_BASHRC
 
 /* Define if you want the case-capitalizing operators (~[~]) and the
    `capcase' variable attribute (declare -c). */
@@ -122,7 +134,7 @@
 
 /* Define to 0 if you want the checkwinsize option off by default, 1 if you
    want it on. */
-#define CHECKWINSIZE_DEFAULT	0
+#define CHECKWINSIZE_DEFAULT	1
 
 /* Define to 1 if you want to optimize for sequential array assignment when
    using indexed arrays, 0 if you want bash-4.2 behavior, which favors

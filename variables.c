@@ -88,6 +88,16 @@
 #define BASHFUNC_SUFFIX		"%%"
 #define BASHFUNC_SUFFLEN	2	/* == strlen(BASHFUNC_SUFFIX) */
 
+#define BASHFUNC_PREFIX		"BASH_FUNC_"
+#define BASHFUNC_PREFLEN	10	/* == strlen(BASHFUNC_PREFIX */
+#define BASHFUNC_SUFFIX		"%%"
+#define BASHFUNC_SUFFLEN	2	/* == strlen(BASHFUNC_SUFFIX) */
+
+#define BASHFUNC_PREFIX		"BASH_FUNC_"
+#define BASHFUNC_PREFLEN	10	/* == strlen(BASHFUNC_PREFIX */
+#define BASHFUNC_SUFFIX		"%%"
+#define BASHFUNC_SUFFLEN	2	/* == strlen(BASHFUNC_SUFFIX) */
+
 extern char **environ;
 
 /* Variables used here and defined in other files. */

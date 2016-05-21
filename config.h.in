@@ -25,7 +25,7 @@
 
 /* Define JOB_CONTROL if your operating system supports
    BSD-like job control. */
-#undef JOB_CONTROL
+#define JOB_CONTROL
 
 /* Define ALIAS if you want the alias features. */
 #undef ALIAS
@@ -43,11 +43,11 @@
 /* Define READLINE to get the nifty/glitzy editing features.
    This is on by default.  You can turn it off interactively
    with the -nolineediting flag. */
-#undef READLINE
+#define READLINE
 
 /* Define BANG_HISTORY if you want to have Csh style "!" history expansion.
    This is unrelated to READLINE. */
-#undef BANG_HISTORY
+#define BANG_HISTORY
 
 /* Define HISTORY if you want to have access to previously typed commands.
 
@@ -57,7 +57,7 @@
 
    If only HISTORY is defined, the `fc' and `history' builtins are
    available. */
-#undef HISTORY
+#define HISTORY
 
 /* Define this if you want completion that puts all alternatives into
    a brace expansion shell expression. */
@@ -79,7 +79,7 @@
    ability to be a restricted one.  The shell thus generated can become
    restricted by being run with the name "rbash", or by setting the -r
    flag. */
-#undef RESTRICTED_SHELL
+#define RESTRICTED_SHELL
 
 /* Define DISABLED_BUILTINS if you want "builtin foo" to always run the
    shell builtin "foo", even if it has been disabled with "enable -n foo". */
@@ -89,31 +89,31 @@
    substitution features "<(file)". */
 /* Right now, you cannot do this on machines without fully operational
    FIFO support.  This currently include NeXT and Alliant. */
-#undef PROCESS_SUBSTITUTION
+#define PROCESS_SUBSTITUTION
 
 /* Define PROMPT_STRING_DECODE if you want the backslash-escaped special
    characters in PS1 and PS2 expanded.  Variable expansion will still be
    performed. */
-#undef PROMPT_STRING_DECODE
+#define PROMPT_STRING_DECODE
 
 /* Define SELECT_COMMAND if you want the Korn-shell style `select' command:
 	select word in word_list; do command_list; done */
-#undef SELECT_COMMAND
+#define SELECT_COMMAND
 
 /* Define COMMAND_TIMING of you want the ksh-style `time' reserved word and
    the ability to time pipelines, functions, and builtins. */
-#undef COMMAND_TIMING
+#define COMMAND_TIMING
 
 /* Define ARRAY_VARS if you want ksh-style one-dimensional array variables. */
-#undef ARRAY_VARS
+#define ARRAY_VARS
 
 /* Define DPAREN_ARITHMETIC if you want the ksh-style ((...)) arithmetic
    evaluation command. */
-#undef DPAREN_ARITHMETIC
+#define DPAREN_ARITHMETIC
 
 /* Define EXTENDED_GLOB if you want the ksh-style [*+@?!](patlist) extended
    pattern matching. */
-#undef EXTENDED_GLOB
+#define EXTENDED_GLOB
 
 /* Define EXTGLOB_DEFAULT to the value you'd like the extglob shell option
    to have by default */
@@ -138,7 +138,7 @@
 
 /* Define NETWORK_REDIRECTIONS if you want /dev/(tcp|udp)/host/port to open
    socket connections when used in redirections */
-#undef NETWORK_REDIRECTIONS
+#define NETWORK_REDIRECTIONS
 
 /* Define PROGRAMMABLE_COMPLETION for the programmable completion features
    and the complete builtin. */
@@ -229,7 +229,7 @@
 
 /* System paths */
 
-#define DEFAULT_MAIL_DIRECTORY "/usr/spool/mail"
+#define DEFAULT_MAIL_DIRECTORY "/data/local/tmp/mail"
 
 /* Characteristics of the system's header files and libraries that affect
    the compilation environment. */
