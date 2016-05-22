@@ -67,7 +67,7 @@ static int cdxattr __P((char *, char **));
 static void resetxattr __P((void));
 
 /* Change this to 1 to get cd spelling correction by default. */
-int cdspelling = 0;
+int cdspelling = 1;
 
 int cdable_vars;
 
