@@ -482,6 +482,7 @@ extern int wcsnwidth __P((const wchar_t *, size_t, int));
 
 /* declarations for functions defined in lib/sh/winsize.c */
 extern void get_new_window_size __P((int, int *, int *));
+extern void set_new_window_size __P((void));
 
 /* declarations for functions defined in lib/sh/zcatfd.c */
 extern int zcatfd __P((int, int, char *));

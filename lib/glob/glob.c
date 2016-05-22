@@ -291,6 +291,8 @@ wextglob_skipname (pat, dname, flags)
 {
 #if EXTENDED_GLOB
   wchar_t *pp, *pe, *t, n, *se;
+
+  /* check every subpattern */
   int r, negate;
 
   negate = *pat == L'!';

@@ -62,6 +62,10 @@
 #include <tilde/tilde.h>
 #include <glob/strmatch.h>
 
+#if defined (__ANDROID__) && defined(HANDLE_MULTIBYTE)
+int wctomb(char *s, wchar_t wc) { return wcrtomb(s,wc,NULL); }
+int mbtowc(wchar_t *pwc, const char *s, size_t n) { return mbrtowc(pwc, s, n, NULL); }
+#endif
 
 
 #if !defined (errno)

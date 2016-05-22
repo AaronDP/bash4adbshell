@@ -232,7 +232,7 @@ killpg (pgrp, sig)
   return (kill (-pgrp, sig));
 }
 #endif /* !HAVE_KILLPG */
-
+/* __ANDROID__ --> static __inline__ int mkfifo(const char *__p, mode_t __m) */
 #if !defined (HAVE_MKFIFO) && defined (PROCESS_SUBSTITUTION)
 int
 mkfifo (path, mode)

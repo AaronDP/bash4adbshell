@@ -317,7 +317,6 @@ assign_array_element_internal (entry, name, vname, sub, sublen, value, flags)
       entry = bind_array_variable (vname, ind, value, flags);
     }
 
-  VUNSETATTR (entry, att_invisible);	/* no longer invisible */
   return (entry);
 }
 

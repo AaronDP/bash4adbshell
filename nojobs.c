@@ -888,9 +888,12 @@ get_tty_state ()
     {
       ttgetattr (tty, &shell_tty_info);
       got_tty_state = 1;
-      if (check_window_size)
+      if (check_window_size) {
 	get_new_window_size (0, (int *)0, (int *)0);
+        set_new_window_size();
+      }
     }
+  
 }
 
 /* Make the current tty use the state in shell_tty_info. */

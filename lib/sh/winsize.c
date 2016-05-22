@@ -70,6 +70,51 @@ extern void rl_set_screen_size __P((int, int));
 #endif
 extern void sh_set_lines_and_columns __P((int, int));
 
+#include <pwd.h>
+#define ESC "\033"
+char *myname;
+char getsize[] = ESC "7"  ESC "[r" ESC "[999;999H" ESC "[6n";
+char restore[] = ESC "8";
+struct termios tioorig;
+char size[] = ESC "[%d;%dR";
+int tty;
+static void onintr (int sig);
+
+static void
+onintr(int sig)
+{
+       tcsetattr (STDERR_FILENO, TCSANOW, &tioorig);
+}
+
+int
+set_new_window_size ()
+{
+
+       struct termios tio;
+       struct winsize ws = { 0, 0, 0, 0};
+
+       tty = STDERR_FILENO;
+       tcgetattr(tty, &tioorig);
+       tcgetattr(tty, &tio);
+       tio.c_cflag |= (CLOCAL | CREAD);
+       tio.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
+
+       signal(SIGINT, onintr);
+       signal(SIGQUIT, onintr);
+       signal(SIGTERM, onintr);
+       tcsetattr(tty, TCSANOW, &tio);
+
+       write(tty, getsize, strlen(getsize));
+       scanf(ESC"[%hu;%huR", &ws.ws_row, &ws.ws_col);
+       write(tty, restore, strlen(restore));
+       ioctl (tty, TIOCSWINSZ, &ws);
+       tcsetattr(tty, TCSANOW, &tioorig);
+       signal(SIGINT, SIG_DFL);
+       signal(SIGQUIT, SIG_DFL);
+       signal(SIGTERM, SIG_DFL);
+       return 0;
+}
+
 void
 get_new_window_size (from_sig, rp, cp)
      int from_sig;

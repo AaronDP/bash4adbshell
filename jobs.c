@@ -2031,8 +2031,10 @@ get_tty_state ()
 	  return -1;
 	}
 #endif /* TERMIOS_TTY_DRIVER */
-      if (check_window_size)
+      if (check_window_size) {
 	get_new_window_size (0, (int *)0, (int *)0);
+        set_new_window_size();
+      }
     }
   return 0;
 }
@@ -2042,6 +2044,7 @@ int
 set_tty_state ()
 {
   int tty;
+
 
   tty = input_tty ();
   if (tty != -1)

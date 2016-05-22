@@ -37,3 +37,50 @@ config-top.h.*
 # Leave out patch created files
 *.orig
 *.rej
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+
+bash
+bashbug
+bashversion
+mkbuiltins
+android-make.sh
+*.log
+junk*
+stamp-h
+.made
+.build
+mksignames
+mksyntax
