@@ -76,7 +76,6 @@ bash
 bashbug
 bashversion
 mkbuiltins
-android-make.sh
 *.log
 junk*
 stamp-h
