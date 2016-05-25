@@ -2033,7 +2033,7 @@ get_tty_state ()
 #endif /* TERMIOS_TTY_DRIVER */
       if (check_window_size) {
 	get_new_window_size (0, (int *)0, (int *)0);
-        set_new_window_size();
+        /* set_new_window_size(); */
       }
     }
   return 0;
